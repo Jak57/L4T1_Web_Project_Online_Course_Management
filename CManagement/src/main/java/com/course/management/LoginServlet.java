@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
 		
 		try {
 			PrintWriter out = response.getWriter();
@@ -35,12 +34,10 @@ public class LoginServlet extends HttpServlet {
 			
 			String name = request.getParameter("name");
 			String pwd = request.getParameter("pwd");
-			
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM users WHERE user_name = ? AND pass_word = ?");
 			
 			ps.setString(1, name);
 			ps.setString(2, pwd);
-			
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
@@ -50,11 +47,6 @@ public class LoginServlet extends HttpServlet {
 				String utype = rs.getString("utype");
 				String user_name = rs.getString("user_name");
 				String user_id = rs.getString("user_id");
-				
-				System.out.println("Full name: " + full_name);
-				System.out.println("User type: " + utype);
-				System.out.println("User name: " + user_name);
-				System.out.println("User id: " + user_id);
 				
 				// Storing user credentials into session
 				HttpSession session = request.getSession(true);
@@ -69,19 +61,15 @@ public class LoginServlet extends HttpServlet {
 						break;
 					}
 					case "teacher": {
-						// out.println("Welcome Teacher");
 						response.sendRedirect("Teacher");
 						break;
 					}
 					case "student": {
-						// out.println("Welcome Student");
 						response.sendRedirect("Student");
 						break;
 					}
 				}
-				
-				// RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
-				// rd.forward(request, response);
+
 			} else {
 				out.println("Login failed!");
 				out.println("Try again!!");

@@ -27,7 +27,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="http://localhost:8080/mycourses/Login">Online Course Management System</a>
+		<a class="navbar-brand" href="http://localhost:8080/CManagement/Admin">Online Course Management System</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
 			<div class="navbar-nav ml-auto"></div>
 		</div>
 		
-		<form class="form-inline" method="post" action="LogOut">
+		<form class="form-inline" method="post" action="Logout">
 			<input type="hidden" name="id" value="logout">
 			<button type="submit" class="btn btn-primary">Log out</button>
 		</form>
@@ -70,9 +70,9 @@
 									placeholder="Like Web Technology">
 							</div>
 							<div class="form-group">
-								<label for="formGroupExampleInput2">Course Teacher</label> <input
+								<label for="formGroupExampleInput2">Course Teacher Username</label> <input
 									type="text" class="form-control" name="courseTeacher"
-									placeholder="Like Forhad Rabbi">
+									placeholder="Like summit">
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>

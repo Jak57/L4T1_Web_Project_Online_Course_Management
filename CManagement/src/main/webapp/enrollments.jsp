@@ -27,7 +27,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="http://localhost:8080/mycourses/Login">Online Course Management System</a>
+		<a class="navbar-brand" href="http://localhost:8080/CManagement/Teacher">Online Course Management System</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +36,12 @@
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav mr-auto"></div>
 			<div class="navbar-nav ml-auto">
-				<form class="form-inline" method="post" action="EnrollFwd">
-					<input type="hidden" name="courseId" value="<c:out value="${courseId}"></c:out>">
-					<button type="submit" class="btn btn-info">Back to MyCourses</button>
-				</form>
 			</div>
 		</div>
+		<form class="form-inline" method="post" action="Logout">
+			<input type="hidden" name="id" value="logout">
+			<button type="submit" class="btn btn-primary">Log out</button>
+		</form>
 	</nav>
 	<br>
 	<div class="container">

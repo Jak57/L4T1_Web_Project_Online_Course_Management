@@ -28,9 +28,7 @@ public class Teacher extends HttpServlet {
 	// Database Credentials
 	static final String USER = "root";
 	static final String PASSWORD = "password";
-	
-	
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +42,6 @@ public class Teacher extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Getting user's credentials from session
 		String user_name = (String)request.getSession(false).getAttribute("user_name");
@@ -62,15 +59,12 @@ public class Teacher extends HttpServlet {
 			
 			// Storing course informations
 			List<String[]> courseData = new ArrayList<String[]>();
-			
 			while (rs.next()) {
 				String course_id = rs.getString(1);
 				String course_name = rs.getString(2);
-				//String full_name
 				
 				String arr[] = {course_id, course_name, full_name};
 				courseData.add(arr);
-				System.out.println(course_id + " " + course_name + " " + full_name);
 			}
 			rs.close();
 			con.close();

@@ -42,7 +42,6 @@ public class Enrollments extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -61,7 +60,6 @@ public class Enrollments extends HttpServlet {
 			while (rs.next()) {
 				String arr[] = {rs.getString(1), rs.getString(2), rs.getString(3)};
 				courseData.add(arr);
-				System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
 			}
 			rs.close();
 			con.close();

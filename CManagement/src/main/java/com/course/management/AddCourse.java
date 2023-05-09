@@ -48,7 +48,7 @@ public class AddCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
@@ -64,11 +64,8 @@ public class AddCourse extends HttpServlet {
 			ps.setString(2, course_name);
 			ps.setString(3, course_teacher);
 			
-			System.out.println("---------------- " + course_id + " " + course_name + " " + course_teacher);
-			
 			ps.executeUpdate();
 			con.close();
-			
 			response.sendRedirect("Admin");
 			
 		} catch (ClassNotFoundException e) {

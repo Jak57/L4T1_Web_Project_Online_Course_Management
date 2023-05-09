@@ -49,7 +49,6 @@ public class EnrollCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
 		
 		// Getting user's credentials from session
 		String user_name = (String)request.getSession(false).getAttribute("user_name");
@@ -73,20 +72,15 @@ public class EnrollCourse extends HttpServlet {
 			ps.setString(3, course_teacher);
 			ps.setString(4, user_name);
 			
-			// ResultSet rs = ps.executeQuery();
 			ps.executeUpdate();
-			System.out.println("Successfully enrolled!");
-			
 			String sql1 = "INSERT INTO enrollments VALUES(?, ?, ?)";
 			PreparedStatement ps1 = con.prepareStatement(sql1);
+			
 			ps1.setString(1, user_id);
 			ps1.setString(2, full_name);
 			ps1.setString(3, course_id);
-			
 			ps1.executeUpdate();
-			System.out.println("Successfully updataed enrollments table");
-			
-			// rs.close();
+
 			ps.close();
 			ps1.close();
 			con.close();

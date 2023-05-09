@@ -43,7 +43,6 @@ public class Enroll extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Getting user's credentials from session
 		String user_name = (String)request.getSession(false).getAttribute("user_name");
@@ -51,8 +50,6 @@ public class Enroll extends HttpServlet {
 		String user_id = (String)request.getSession(false).getAttribute("user_id");
 		
 		try {
-			
-			PrintWriter out = response.getWriter();
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 			
@@ -60,7 +57,6 @@ public class Enroll extends HttpServlet {
 			PreparedStatement ps3 = con.prepareStatement(sql3);
 			ps3.setString(1, user_name);
 			
-			System.out.println("Shortcut: Query");
 			ResultSet rs3 = ps3.executeQuery();
 			List<String[]> courseData = new ArrayList<String[]>();
 			
@@ -73,24 +69,20 @@ public class Enroll extends HttpServlet {
 				String sql2 = "SELECT full_name FROM users WHERE user_name = ?";
 				PreparedStatement ps2 = con.prepareStatement(sql2);
 				ps2.setString(1, course_teacher_user_name);
-				
+		
 				ResultSet rs2 = ps2.executeQuery();
-				
 				String course_teacher_full_name = "";
+				
 				if (rs2.next()) {
 					course_teacher_full_name = rs2.getString(1);
-					System.out.println(course_teacher_full_name);
 				}
 				rs2.close();
 				
 				String arr[] = {course_id, course_name, course_teacher_full_name};
 				courseData.add(arr);
-				
-				System.out.println(course_id + " " + course_name + " " + course_teacher_full_name);
 			}
 			rs3.close();
 			con.close();
-			// out.println("TODO: Enroll.jsp");
 			
 			request.setAttribute("fullname", full_name);
 			request.setAttribute("userid", user_id);

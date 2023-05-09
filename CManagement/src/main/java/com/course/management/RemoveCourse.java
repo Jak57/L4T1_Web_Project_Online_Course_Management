@@ -48,12 +48,10 @@ public class RemoveCourse extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-			
 			String course_id = request.getParameter("id");
 			
 			String sql = "DELETE FROM courses WHERE course_id = ?";

@@ -44,15 +44,12 @@ public class Admin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Getting user's information from session
 		String user_name = (String)request.getSession(false).getAttribute("user_name");
 		String full_name = (String)request.getSession(false).getAttribute("full_name");
 		
 		try {
-			// PrintWriter out = response.getWriter();
-			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
 			
@@ -62,18 +59,7 @@ public class Admin extends HttpServlet {
 			
 			// Storing course information
 			List<String[]> courseData = new ArrayList<String[]>();
-			
 			ResultSet rs = ps.executeQuery();
-//			if (rs.next()) {
-//				out.println("Successful Admin");
-//				
-//				String course_id = rs.getString(1);
-//				String arr[] = {};
-//				
-//				
-//			} else {
-//				out.println("Failed Admin");
-//			}
 			
 			while (rs.next()) {
 				String course_id = rs.getString(1);
@@ -86,18 +72,15 @@ public class Admin extends HttpServlet {
 				ps2.setString(1, course_teacher_user_name);
 				
 				ResultSet rs2 = ps2.executeQuery();
-				
 				String course_teacher_full_name = course_teacher_user_name;
+				
 				if (rs2.next()) {
 					course_teacher_full_name = rs2.getString(1);
-					System.out.println(course_teacher_full_name);
 				}
 				rs2.close();
 				
 				String arr[] = {course_id, course_name, course_teacher_full_name};
 				courseData.add(arr);
-				
-				System.out.println(course_id + " " + course_name + " " + course_teacher_full_name);
 			}
 			rs.close();
 			con.close();

@@ -42,7 +42,6 @@ public class Student extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Getting user's credentials from session
 		String user_name = (String)request.getSession(false).getAttribute("user_name");
@@ -59,7 +58,6 @@ public class Student extends HttpServlet {
 			ps.setString(1, user_name);
 			
 			ResultSet rs = ps.executeQuery();
-			
 			// Storing course informations
 			List<String[]> courseData = new ArrayList<String[]>();
 			
@@ -70,7 +68,6 @@ public class Student extends HttpServlet {
 				
 				String arr[] = {course_id, course_name, course_teacher};
 				courseData.add(arr);
-				System.out.println(course_id + " " + course_name + " " + course_teacher);
 			}
 			rs.close();
 			con.close();
@@ -82,7 +79,6 @@ public class Student extends HttpServlet {
 			request.setAttribute("courses", courseData);
 			
 			request.getRequestDispatcher("home-student.jsp").forward(request, response);
-			
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
